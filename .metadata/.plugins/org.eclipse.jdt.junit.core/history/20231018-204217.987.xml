@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="WordTester" project="CS-1420-Fall-2023" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="assign06.WordTester" time="0.077" displayname="WordTester" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]">
+    <testcase name="testIsPalindromeOneLetter" classname="assign06.WordTester" time="0.048" displayname="testIsPalindromeOneLetter()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testIsPalindromeOneLetter()]"/>
+    <testcase name="testIsPlaindromeNoLetter" classname="assign06.WordTester" time="0.003" displayname="testIsPlaindromeNoLetter()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testIsPlaindromeNoLetter()]"/>
+    <testcase name="testIsPalindromeTrue" classname="assign06.WordTester" time="0.002" displayname="testIsPalindromeTrue()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testIsPalindromeTrue()]"/>
+    <testcase name="testToStringMultipleWords" classname="assign06.WordTester" time="0.002" displayname="testToStringMultipleWords()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testToStringMultipleWords()]"/>
+    <testcase name="testIsPalindromeFalse" classname="assign06.WordTester" time="0.002" displayname="testIsPalindromeFalse()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testIsPalindromeFalse()]"/>
+    <testcase name="testIsPalindromeCaseSensitive" classname="assign06.WordTester" time="0.002" displayname="testIsPalindromeCaseSensitive()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testIsPalindromeCaseSensitive()]"/>
+    <testcase name="testConstructorException" classname="assign06.WordTester" time="0.003" displayname="testConstructorException()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testConstructorException()]"/>
+    <testcase name="testToStringNormal" classname="assign06.WordTester" time="0.001" displayname="testToStringNormal()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testToStringNormal()]"/>
+  </testsuite>
+</testrun>

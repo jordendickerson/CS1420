@@ -1,0 +1,39 @@
+package assign07;
+
+public class Magic extends Item{
+	private int power;
+	private int cost;
+	
+	public Magic(String name, int power, int cost) {
+		super(name);
+		this.power = power;
+		this.cost = cost;
+	}
+	
+	public String toString() {
+		return "Magic: " + getName() + " - power = " + this.power + ", cost = " + cost;
+	}
+
+	public void merge(Item other) {
+		if (other instanceof Magic) {
+			this.power += ((Magic) other).power;
+			this.cost++;
+		}
+	}
+	
+	public int compareTo(Item other) {
+		if (other instanceof Tool || other instanceof Armor)
+			return -1;
+		
+		double thisRatio = this.power / this.cost;
+		double otherRatio = ((Magic) other).power / ((Magic) other).cost;
+		
+		if (thisRatio > otherRatio)
+			return 1;
+		else if (thisRatio == otherRatio)
+			return 0;
+		else
+			return -1;
+		
+	}
+}

@@ -1,0 +1,19 @@
+package lab09;
+
+public class Student implements Comparable<Student>{
+	private String firstName;
+	private String lastName;
+	private int id;
+	private double GPA;
+	
+	public Student(String firstName, String lastName, int id, double GPA) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.id = id;
+		this.GPA = GPA;
+	}
+	
+	public String toString() {
+		return ("Name: " + this.firstName + " " + this.lastName + ", Student ID: " + this.id + ", GPA: " + this.GPA);
+	}
+}

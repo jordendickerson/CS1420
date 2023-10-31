@@ -1,0 +1,56 @@
+package assign05;
+
+public class Rectangle {
+	private int x;
+	private int y;
+	private int width;
+	private int height;
+	
+	public Rectangle() {
+		this.x = 0;
+		this.y = 0;
+		this.width = 1;
+		this.height = 1;
+	}
+	
+	public Rectangle(int positionX, int positionY, int width, int height) {
+		this.x = positionX;
+		this.y = positionY;
+		this.width = width;
+		this.height = height;
+	}
+	
+	public int getX() {
+		return this.x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
+	
+	public int getWidth() {
+		return this.width;
+	}
+	
+	public int getHeight() {
+		return this.height;
+	}
+	
+	public void move(int newX, int newY) {
+		this.x = newX;
+		this.y = newY;
+	}
+	
+	public void scale(double xFactor, double yFactor) {
+		this.width = (int)(this.width * xFactor);
+		this.height = (int)(this.height * yFactor);
+	}
+	
+	public boolean largerThan (Rectangle other) {
+		return ((this.width * this.height) > (other.width * other.height));
+	}
+	
+	public Rectangle boundingRectangle(Rectangle other) {
+		
+	}
+}

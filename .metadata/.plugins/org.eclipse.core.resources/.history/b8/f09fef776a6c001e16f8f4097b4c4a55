@@ -1,0 +1,7 @@
+package meeting13;
+
+public class Deli {
+
+	private String name;
+	
+}

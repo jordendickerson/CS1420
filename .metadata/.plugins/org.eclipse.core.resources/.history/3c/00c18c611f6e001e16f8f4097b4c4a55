@@ -1,0 +1,53 @@
+package assign06;
+
+/**
+ * Creates a Word object that sets an array of letters to each letter of a
+ * passed in word.
+ * 
+ * @author Jorden Dickerson
+ * @version Oct. 18, 2023
+ */
+public class Word {
+	private char[] letters;
+	
+	public Word(String word) {
+		//Set the letters array to each letter of the word
+		for (int i = 0; i < word.length(); i++) {
+			char letter = word.charAt(i);
+			//If the letter has the correct ASCII code, set it in the letters array
+			if ((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122)) {
+				letters[i] = letter;
+			}
+			//If the letter has an incorrect ASCII code and is not a letter, throw an IllegalArgumentException
+			else {
+				throw new IllegalArgumentException();
+			}
+		}
+	}
+	
+	/**
+	 * Generates and returns a String object to represent this Word object 
+	 * (driver method).
+	 * 
+	 * @return a String object that represents this Word object
+	 */
+	public String toString() {
+	   return toString(0);
+	}
+		
+	/**
+	 * Generates and returns a String object to represent the letters of 
+	 * this Word object from a given index to the last index (recursive method).
+	 * 
+	 * @param startIndex - index at which to start
+	 * @return the letters of this Word from startIndex to the last index, as a String
+	 */
+	private String toString(int startIndex) {
+	   // base case
+	   if(startIndex == letters.length)
+	      return "";
+	   // recursive case
+	   return letters[startIndex] + toString(startIndex + 1);
+	}
+
+}

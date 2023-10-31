@@ -1,0 +1,147 @@
+package assign06;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * Tester for the Word class.
+ * 
+ * @author Prof. Parker and ?
+ * @version ?
+ */
+public class WordTester {
+
+	/**
+	 * Test that the Word class constructor properly throws an exception when 
+	 * the given string contains characters that are not a-z or A-Z.
+	 */
+	@Test
+	public void testConstructorException() {
+		assertThrows(IllegalArgumentException.class, () -> { new Word("hel!o"); });
+	}
+	
+	/**
+	 * Test that the Word class constructor properly sets the private instance 
+	 * variable, which is used to generate and return a String in the toString method.
+	 */
+	@Test
+	public void testToStringNormal() {
+		Word normal = new Word("Normal");
+		assertEquals("Normal", normal.toString());
+	}
+	
+	/**
+	 * Test that the Word class constructor properly throws an exception when
+	 * the given string contains multiple words.
+	 */
+	@Test
+	public void testToStringMultipleWords() {
+		assertThrows(IllegalArgumentException.class, () -> {new Word("Hello there"); });
+	}
+	
+	// TODO: Uncomment in Step 4 to test isPalindrome.
+	
+	@Test
+	public void testIsPalindromeTrue() {
+		Word palindrome = new Word("saippuakivikauppias");
+		assertTrue(palindrome.isPalindrome());
+	}
+	
+	@Test
+	public void testIsPalindromeOneLetter() {		
+		Word oneLetter = new Word("a");
+		assertTrue(oneLetter.isPalindrome());
+	}
+	
+	/**
+	 * Test that the isPalindrome method asserts false when there are no letters
+	 */
+	@Test
+	public void testIsPlaindromeNoLetter() {
+		Word noLetter = new Word("");
+		assertFalse(noLetter.isPalindrome());
+	}
+	
+	/**
+	 * Tests that the isPalindrome method is case sensitive and returns false
+	 * when it is same letter different case.
+	 */
+	@Test
+	public void testIsPalindromeCaseSensitive() {
+		Word abba = new Word("Abba");
+		assertFalse(abba.isPalindrome());
+	}
+	
+	/**
+	 * Tests that the isPalindrome method asserts false when given a 
+	 * word that is not a palindrome.
+	 */
+	@Test
+	public void testIsPalindromeFalse() {
+		Word falsePalindrome = new Word("indubitably");
+		assertFalse(falsePalindrome.isPalindrome());
+	}
+	
+	/**
+	 * Tests that the isPalindrome method does not change the object
+	 * state
+	 */
+	public void testIsPalindromeChangeState(){
+		Word word = new Word("Cram");
+		word.isPalindrome();
+		assertEquals("Cram", word.toString());
+	}
+	
+	
+
+	
+	@Test
+	public void testReplaceLetterExceptionFirstArg() {
+		Word oneLetter = new Word("a");
+     	assertThrows(IllegalArgumentException.class, () -> { oneLetter.replaceLetter(' ', 'l'); });
+	}
+	
+	@Test
+	public void testReplaceLetterHello() {
+		Word hello = new Word("hello");
+		assertEquals("hesso", hello.replaceLetter('l', 's').toString());
+	}
+	
+	
+	// TODO: Write at least three more tests for replace, considering cases untested by provided tests.
+
+	@Test
+	public void testReplaceLetterSameLetter() {
+		Word garb = new Word("garb");
+		assertEquals("garb", garb.replaceLetter('a', 'a').toString());
+	}
+	
+	/**
+	 * Tests that replaceLetter still functions even when the letter to replace is
+	 * not in the word
+	 */
+	@Test
+	public void testReplaceLetterNotFound() {
+		Word ambidextrous = new Word("ambidextrous");
+		assertEquals("ambidextrous", ambidextrous.replaceLetter('z', 'w').toString());
+	}
+	// TODO: Uncomment in Step 8 to test reverse.
+	/*
+	@Test
+	public void testReverseHello() {
+		Word hello = new Word("hello");
+		hello.reverse();
+		assertEquals("olleh", hello.toString());
+	}
+	
+	@Test
+	public void testReverseEmpty() {
+		Word empty = new Word("");
+		empty.reverse();
+		assertEquals("", empty.toString());
+	}
+	*/
+	
+	// TODO: Write at least two more tests for reverse, considering cases untested by provided tests.
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="WordTester" project="CS-1420-Fall-2023" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="assign06.WordTester" time="0.047" displayname="WordTester" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]">
+    <testcase name="testConstructorException" classname="assign06.WordTester" time="0.044" displayname="testConstructorException()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testConstructorException()]"/>
+    <testcase name="testToStringNormal" classname="assign06.WordTester" time="0.002" displayname="testToStringNormal()" uniqueid="[engine:junit-jupiter]/[class:assign06.WordTester]/[method:testToStringNormal()]"/>
+  </testsuite>
+</testrun>

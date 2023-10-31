@@ -1,0 +1,17 @@
+package meeting13;
+
+public class Item {
+	public String name;
+	public double price;
+	
+	public Item(String name, double price) {
+		this.name = name;
+		this.price = price;
+	}
+	
+	
+	public String receiptString() {
+		return this.name + " : $" + this.price;
+	}
+
+}

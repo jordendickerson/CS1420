@@ -1,0 +1,23 @@
+package assign07;
+
+public class Magic extends Item{
+	private int power;
+	private int cost;
+	
+	public Magic(String name, int power, int cost) {
+		super(name);
+		this.power = power;
+		this.cost = cost;
+	}
+	
+	public String toString() {
+		return "Magic: " + getName() + " - power = " + this.power + ", cost = " + cost;
+	}
+
+	public void merge(Item other) {
+		if (other instanceof Magic) {
+			this.power += ((Magic) other).power;
+			this.cost++;
+		}
+	}
+}

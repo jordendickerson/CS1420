@@ -1,0 +1,10 @@
+package assign07;
+
+public class Tool extends Item{
+	private int power;
+
+	public Tool(String name, int power) {
+		super(name);
+		this.power = power;
+	}
+}

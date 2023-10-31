@@ -1,0 +1,19 @@
+package lab08;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestingPracticeTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAdd() {
+	    int result = 10 + 20;
+	    assertEquals(30, result, "Failed 10 plus 20");
+	}
+}

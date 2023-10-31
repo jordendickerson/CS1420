@@ -1,0 +1,17 @@
+package assign04;
+
+public class MethodPractice {
+
+	public static void main(String[] args) {
+		int test = kilometersToMiles(20.0);
+		System.out.println(test);
+
+	}
+	
+	public static int kilometersToMiles(double kilometers) {
+		double miles = kilometers * 1.60934;
+		
+		return (int)miles;
+	}
+
+}
