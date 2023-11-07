@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="ItemTester" project="CS-1420-Fall-2023" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="assign07.ItemTester" time="0.008" displayname="ItemTester" uniqueid="[engine:junit-jupiter]/[class:assign07.ItemTester]">
-    <testcase name="testMergeTool" classname="assign07.ItemTester" time="0.006" displayname="testMergeTool()" uniqueid="[engine:junit-jupiter]/[class:assign07.ItemTester]/[method:testMergeTool()]"/>
-  </testsuite>
-</testrun>
