@@ -1,11 +1,13 @@
 package assign08;
 
+import java.util.Arrays;
+
 /**
  * This class represents a better dynamic array of integers, doubling the length of
  * the backing array when more space is needed and never shrinking.
  * 
- * @author Prof. Parker and ?
- * @version ?
+ * @author Prof. Parker and Jorden Dickerson
+ * @version Nov. 7, 2023
  */
 public class BetterDynamicArray {
 
@@ -47,9 +49,7 @@ public class BetterDynamicArray {
 		// HINT: The index is valid if it is in the range of indexes currently used by 
 		// elements in this dynamic array.  The range is determined by elementCount, 
 		// not elements.length.
-		if(index < 0 || index > elementCount)
-			throw new IndexOutOfBoundsException(
-					"Index " + index + "is invalid for this array with length " + elements.length);
+		checkIndexOutOfBounds(index);
 		
 		// Step 2: If there are no free spaces in the backing array, expand.
 		// (This step is already done for you.)
@@ -61,11 +61,13 @@ public class BetterDynamicArray {
 		// ADVICE: Try this on paper first since this can be a difficult operation.
 		// HINT: It is best to shift the elements if you start at the end because
 		// it prevents overwriting values that have not yet been shifted.
-		
+		for (int i = elementCount; i > index; i--) {
+			elements[i+1] = elements[i];
+		}
 		// Step 4: Insert value at index.
-		
+		elements[index] = value;
 		// Step 5: Update elementCount.
-		
+		elementCount++;
 		// DO NOT create a new array each time this method is called. If you create 
 		// a new array each time, your program will be too slow to earn full credit.
 	}
@@ -91,8 +93,9 @@ public class BetterDynamicArray {
 	 */
 	public int getElement(int index) {		
 		// TODO: Fill in and replace "return 0" appropriately.
-
-		return 0; 
+		checkIndexOutOfBounds(index);
+		
+		return elements[index]; 
 	}
 
 	/**
@@ -103,7 +106,7 @@ public class BetterDynamicArray {
 	public int size() {
 		// TODO: Replace "return 0" appropriately.
 
-		return 0; 
+		return elementCount; 
 	}
 
 	/**
@@ -116,6 +119,8 @@ public class BetterDynamicArray {
 	 */
 	public void setElement(int index, int value) {
 		// TODO: Fill in according to steps below.
+		checkIndexOutOfBounds(index);
+		elements[index] = value;
 	}
 
 	/**
@@ -131,12 +136,14 @@ public class BetterDynamicArray {
 		// Its length should be the same before and after executing this method.
 		
 		// Step 1: Add code to ensure the value of index is valid.
-
+		checkIndexOutOfBounds(index);
 		// Step 2: Shift the elements at positions index + 1, index + 2, and so on
 		// down one position.  This overwrites the deleted element at index.
-		
+		for (int i = index; i < elementCount; i++) {
+			elements[i] = elements[i + 1];
+		}
 		// Step 3: Update elementCount.
-		
+		elementCount--;
 		// DO NOT create a new array each time this method is called. If you create 
 		// a new array each time, your program will be too slow to earn full credit.
 	}
@@ -147,6 +154,17 @@ public class BetterDynamicArray {
 	public void sort() {
 		// TODO: Fill in with the appropriate call to a sort method from Java's Arrays class.
 		// https://docs.oracle.com/en/java/javase/18/docs/api/java.base/java/util/Arrays.html
+		Arrays.sort(elements);
+	}
+	
+	/**
+	 * Throws an IndexOutOfBoundsException if the index is out of bounds
+	 * @param index
+	 */
+	private void checkIndexOutOfBounds(int index) {
+		if(index < 0 || index > elementCount)
+			throw new IndexOutOfBoundsException(
+					"Index " + index + "is invalid for this array with length " + elements.length);
 	}
 
 	/**
