@@ -77,9 +77,14 @@ public class GradeCalculator {
 		if (assignmentsArray.size() < 1)
 			throw new NoSuchElementException();
 		
-		int middle = assignmentsArray.size() / 2;
+		int median;
+		if (assignmentsArray.size() % 2 == 0) {
+			median = assignmentsArray.getElement((assignmentsArray.size() / 2) - 1);
+		}else {
+			median = assignmentsArray.getElement((assignmentsArray.size() - 1) / 2);
+		}
 		
-		return assignmentsArray.getElement(middle);
+		return median;
 	}
 	
 	/**

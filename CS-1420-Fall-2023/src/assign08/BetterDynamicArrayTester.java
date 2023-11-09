@@ -8,12 +8,13 @@ import org.junit.jupiter.api.Test;
 /**
  * This class contains tests for the BetterDynamicArray class. 
  * 
- * @author Prof. Parker and ?
- * @version ?
+ * @author Prof. Parker and Jorden Dickerson
+ * @version Nov 8, 2023
  */
 public class BetterDynamicArrayTester {   
     
 	private static BetterDynamicArray threeInts;
+	private static BetterDynamicArray largerArray;
 	
 	// This code executes before each test.
 	// You can reference threeStrings in your tests without having to create it.
@@ -23,6 +24,13 @@ public class BetterDynamicArrayTester {
 		threeInts.append(9);
 		threeInts.append(0);
 		threeInts.append(4);
+	}
+	
+	@BeforeEach
+	public void setupLarger() {
+		largerArray = new BetterDynamicArray();
+		for (int i = 0; i < 20; i++)
+			largerArray.append(i);
 	}
        
     @Test
@@ -129,6 +137,77 @@ public class BetterDynamicArrayTester {
     }
     
     // Step 1: Add tests for setElement, delete, and sort methods.
+    @Test
+    public void testSetElement() {
+    	threeInts.setElement(0, 1);
+    	threeInts.setElement(1, 2);
+    	threeInts.setElement(2, 3);
+    	
+    	assertEquals(1, threeInts.getElement(0), "Incorrect number at index 0");
+    	assertEquals(2, threeInts.getElement(1), "Incorrect number at index 1");
+    	assertEquals(3, threeInts.getElement(2), "Incorrect number at index 2");
+    }
     
+    @Test
+    public void testSetElementInvalid() {
+    	assertThrows(IndexOutOfBoundsException.class, () -> { threeInts.setElement(4, 2); },
+    			"Failed to throw an exception when trying to set an element out of range.");
+    }
+    
+    @Test
+    public void testDelete() {
+    	threeInts.delete(0);
+    	
+    	assertEquals(0, threeInts.getElement(0), "Incorrect number at index 0");
+    }
+    
+    @Test
+    public void testDeleteInvalid() {
+    	assertThrows(IndexOutOfBoundsException.class, () -> { threeInts.delete(5); },
+    			"Failed to throw an exception when trying to delete an element out of range.");
+    }
+    
+    @Test
+    public void testSort() {
+    	threeInts.append(1);
+    	threeInts.append(2);
+    	threeInts.sort();
+    	assertEquals(0, threeInts.getElement(0));
+    	assertEquals(1, threeInts.getElement(1));
+    	assertEquals(2, threeInts.getElement(2));
+    	assertEquals(4, threeInts.getElement(3));
+    	assertEquals(9, threeInts.getElement(4));
+    }
     // Step 2: Add tests for all methods that operate on a larger dynamic array that has doubled its length.
+    
+    @Test
+    public void testLargerArrayAppend() {
+    	largerArray.append(44);
+    	assertEquals(44, largerArray.getElement(20));
+    }
+    
+    @Test
+    public void testLargerArrayInsert() {
+    	largerArray.insert(4, 22);
+    	assertEquals(22, largerArray.getElement(4));
+    }
+    
+    @Test
+    public void testLargerArrayGetElement() {
+    	assertEquals(18, largerArray.getElement(18));
+    }
+    
+    @Test
+    public void testLargerArraySort() {
+    	largerArray.append(0);
+    	largerArray.sort();
+    	assertEquals(0, largerArray.getElement(1));
+    }
+    
+    @Test
+    public void testLargerArrayDelete() {
+    	largerArray.toString();
+    	largerArray.delete(5);
+
+    }
 }

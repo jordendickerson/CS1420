@@ -2,6 +2,8 @@ package assign08;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.NoSuchElementException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -81,4 +83,40 @@ public class GradeCalculatorTester {
 	}
 	
 	// Add more tests, considering execution paths so far untested and edge cases.
+	
+	@Test
+	public void testAddExamCourseGradeChange() {
+		midSemesterScores.addExamScore(100);
+		assertEquals("B+", midSemesterScores.getCourseGradeLetter());
+	}
+	
+	@Test
+	public void testEmptyArrayAverageAssignmentScore() {
+		GradeCalculator empty = new GradeCalculator();
+		assertThrows(NoSuchElementException.class,() -> { empty.getAverageAssignmentScore();});
+	}
+	
+	@Test
+	public void testEmptyArrayMedianAssignmentScore() {
+	    GradeCalculator empty = new GradeCalculator();
+	    assertThrows(NoSuchElementException.class, () -> { empty.getMedianAssignmentScore(); });
+	}
+
+	@Test
+	public void testEmptyArrayNumberOfZeroAssignmentScores() {
+	    GradeCalculator empty = new GradeCalculator();
+	    assertThrows(NoSuchElementException.class, () -> { empty.getNumberOfZeroAssignmentScores(); });
+	}
+
+	@Test
+	public void testEmptyArrayHighestAssignmentScore() {
+	    GradeCalculator empty = new GradeCalculator();
+	    assertThrows(NoSuchElementException.class, () -> { empty.getHighestAssignmentScore(); });
+	}
+
+	@Test
+	public void testEmptyArrayLowestAssignmentScore() {
+	    GradeCalculator empty = new GradeCalculator();
+	    assertThrows(NoSuchElementException.class, () -> { empty.getLowestAssignmentScore(); });
+	}
 }
