@@ -21,13 +21,22 @@ public class SlidePuzzleFrame extends JFrame implements ActionListener{
     private JButton solutionButton;
     private JLabel messageLabel;
 
+    
+    /**
+     * Constructs a slide puzzle game with buttons to shuffle the grid and solve the puzzle
+     * 
+     * @author Jorden Dickerson
+     * @version Nov 16 2023
+     */
     public SlidePuzzleFrame(){ 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
+        //Set up the tile panel
         JPanel tilePanel = new JPanel();
         tilePanel.setLayout(new GridLayout(4,4));
         tilePanel.setPreferredSize(new Dimension(720, 720));
         
+        //Create the tiles
         buttonGrid = new TileButton[4][4];
         int ID = 0;
         for (int row = 0; row < 4; row++){
@@ -40,31 +49,35 @@ public class SlidePuzzleFrame extends JFrame implements ActionListener{
         }
         emptyTile = buttonGrid[0][0];
         
-        shuffle();
+        shuffle(); //Shuffle the board
 
+        //Create the panel to display messages
         JPanel messagePanel = new JPanel();
         messageLabel = new JLabel();
         messagePanel.setSize(new Dimension(720, 20));
         messagePanel.add(messageLabel);
         messageLabel.setText(" ");
         
-        
+        //Initialise buttons
         shuffleButton = new JButton("Shuffle");
         shuffleButton.addActionListener(this);
         solutionButton = new JButton("Solve");
         solutionButton.addActionListener(this);
         
+        //Create buttons panel
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(1, 2));
         buttonsPanel.add(shuffleButton);
         buttonsPanel.add(solutionButton);
 
+        //Create container panel
         JPanel containerPanel = new JPanel();
         containerPanel.setLayout(new BoxLayout(containerPanel, BoxLayout.Y_AXIS));
         containerPanel.add(tilePanel);
         containerPanel.add(buttonsPanel);
         containerPanel.add(messagePanel);
 
+        //Set up the window
         this.setTitle("Slide Puzzle");
         this.setContentPane(containerPanel);
         this.setPreferredSize(new Dimension(720, 815));
@@ -73,6 +86,9 @@ public class SlidePuzzleFrame extends JFrame implements ActionListener{
         
     }
 
+    /**
+     * Handles any actions performed on the buttons
+     */
     public void actionPerformed(ActionEvent e){
     	Object source = e.getSource();
     	if (source instanceof TileButton) {
@@ -102,10 +118,19 @@ public class SlidePuzzleFrame extends JFrame implements ActionListener{
     	}
     }
 
+    /**
+     * Checks if the clicked tile is adjacent to the empty tile
+     * @param tile - the tile to be checked
+     * @return
+     */
     private boolean adjacentToEmpty(TileButton tile){
         return Math.abs(tile.getRow() - emptyTile.getRow()) + Math.abs(tile.getColumn() - emptyTile.getColumn()) == 1;
     }
 
+    /**
+     * Chooses a random direction, checks if the empty tile can be swapped in that direction, and moves if it can. 
+     * Repeats process 500 times to ensure a good shuffle.
+     */
     public void shuffle(){
         Random rng = new Random();
         for(int s = 0; s < 500; s++) {
@@ -141,6 +166,9 @@ public class SlidePuzzleFrame extends JFrame implements ActionListener{
 	    }
     }
     
+    /**
+     * Resets the board to its solved state.
+     */
     public void solve() {
     	int newID = 0;
     	for (int row = 0; row < 4; row++){
@@ -153,6 +181,10 @@ public class SlidePuzzleFrame extends JFrame implements ActionListener{
     	emptyTile = buttonGrid[0][0];
     }
     
+    /**
+     * Checks whether the board is in the solved state or not
+     * @return - true if solved, false if not
+     */
     public boolean isSolved() {
     	for (int row = 0; row < 4; row++){
             for (int col = 0; col < 4; col++){
