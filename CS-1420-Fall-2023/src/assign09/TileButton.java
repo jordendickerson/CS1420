@@ -10,7 +10,7 @@ public class TileButton extends JButton {
     private int imageID;
 
     public TileButton(String filename, int row, int column, int imageID){
-        super(new ImageIcon(filename));
+        this.setIcon(new ImageIcon(filename));
         this.row = row;
         this.column = column;
         this.imageID = imageID;
@@ -28,9 +28,16 @@ public class TileButton extends JButton {
         return this.imageID;
     }
 
+    public void setImageID(int newID){
+        this.imageID = newID;
+    }
+
     public void swap(TileButton other){
         Icon otherIcon = other.getIcon();
+        int otherID = other.getImageID();
         other.setIcon(this.getIcon());
+        other.setImageID(this.imageID);
         this.setIcon(otherIcon);
+        this.setImageID(otherID);
     }
 }
