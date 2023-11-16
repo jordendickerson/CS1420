@@ -97,7 +97,6 @@ public class SlidePuzzleFrame extends JFrame implements ActionListener{
     			tileClicked.swap(emptyTile);
     			emptyTile = tileClicked;
     			messageLabel.setText(" ");
-    			System.out.println(isSolved());
     			if(isSolved()) {
         			messageLabel.setText("Congratulations, you solved it!");
         		}
